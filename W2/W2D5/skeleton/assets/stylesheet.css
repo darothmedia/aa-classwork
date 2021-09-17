@@ -1,0 +1,85 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: lightcyan;
+}
+
+h1 {
+  font-size: 38;
+}
+
+h2 {
+  font-size: 32;
+}
+
+.ingredients-list {
+  list-style: square inside;
+}
+
+ol {
+  list-style: armenian
+}
+
+header>img {
+  width: 100px;
+}
+
+ul li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+input[type="radio"] {
+  -webkit-appearance: none;
+  cursor: pointer;
+  outline: none;
+  background-image: url(stars.png);
+  background-position: top;
+  width: 27px;
+  height: 27px;
+}
+
+input[type="radio"]:hover {
+  cursor: pointer;
+  outline: none;
+  -webkit-appearance: none;
+  background-image: url(stars.png);
+  background-position: center;
+  width: 27px;
+  height: 27px;
+}
+
+input[type="radio"]:checked {
+  cursor: pointer;
+  outline: none;
+  -webkit-appearance: none;
+  background-image: url(stars.png);
+  background-position: bottom;
+  width: 27px;
+  height: 27px;
+}
+
+select {
+  cursor: pointer;
+  outline: none;
+}
+
+input[type="submit"] {
+  cursor: pointer;
+  outline: none;
+  background-color: gold;
+}
+
+input[type="submit"]:hover {
+  background-color: darkgoldenrod;
+}
+
+.directions :nth-of-type(2n) {
+  background-color: darkgray;
+}
+
+.user_review+ :first-child {
+  border-top: black;
+  border-style: solid
+}
+
+;
