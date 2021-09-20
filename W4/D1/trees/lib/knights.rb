@@ -13,9 +13,8 @@ class KnightPathFinder
   def self.valid_moves(pos)
     # return false if pos[0] > @grid.length || pos[0] < 0
     # return false if pos[1] > @grid.length || pos[1] < 0
-
-    last_pos = @considered_positions[-1]
-
+    #last_pos = @considered_positions[-1]
+    last_pos = pos
     possible_pos = [
       [(last_pos[0] - 2), (last_pos[1] - 1)], 
       [(last_pos[0] - 1), (last_pos[1] - 2)], 
@@ -32,23 +31,13 @@ class KnightPathFinder
       next if pospos[1] > @grid.length || pospos[1] < 0
       valid_pos << pospos
     end
-    valid_pos.include?(pos)
-    # [-1][-2], [-2][-1], [1][-2], [2][-1], [-1][2], [-2][1]
-    # [1][2]
-    # [2][1]]
-  end
-
-  KnightPathFinder.valid_moves([2,3])
-
-  class Array
-    def self.select
-  end
-
-  [1,2,3].select
-
-
-
     
+    return valid_pos
+  end
 
-
+  def new_move_positions(pos)
+    all_moves = KnightPathFinder.valid_moves(pos)
+    all_moves.select{|move| !@considered_positions.include?(move)}
+  end
+  
 end

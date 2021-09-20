@@ -67,15 +67,15 @@ class PolyTreeNode
  
 end
 
-node1 = PolyTreeNode.new('root') 
-node2 = PolyTreeNode.new('child1') 
-node3 = PolyTreeNode.new('child2')
+# node1 = PolyTreeNode.new('root') 
+# node2 = PolyTreeNode.new('child1') 
+# node3 = PolyTreeNode.new('child2')
 
-node2.parent = node1
-#child1's parent = root
-node2.parent = node3
+# node2.parent = node1
+# #child1's parent = root
+# node2.parent = node3
 #child1's parent = child2, root's children = nil
-p node2.parent
-#child2
-p node1.children
+# p node2.parent
+# #child2
+# p node1.children
 #nil
