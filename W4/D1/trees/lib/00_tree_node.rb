@@ -11,7 +11,7 @@ class PolyTreeNode
   end
 
   def parent=(node)
-    debugger
+    # debugger
     if node != nil
       @parent = node 
       node.children << self unless node.children.include?(self)
@@ -23,7 +23,7 @@ class PolyTreeNode
   end
 
   def inspect
-    @parent
+    @value
   end
 
   def add_child(node)
@@ -37,6 +37,21 @@ class PolyTreeNode
     @children.delete(node)
   end
 
+  def dfs(target)
+    
+    return self if @value == target
+    return nil if @children.empty?
+      
+    # elsif @children.length == 0
+    #   return nil
+    @children.each do |child|
+      if child.dfs(target) != nil
+        child.dfs(target)
+      end
+    end
+    return nil
+  end
+
   
 end
 
@@ -44,5 +59,11 @@ node1 = PolyTreeNode.new('root')
 node2 = PolyTreeNode.new('child1') 
 node3 = PolyTreeNode.new('child2')
 
-node2.parent = nil
-p node2
+node2.parent = node1
+#child1's parent = root
+node2.parent = node3
+#child1's parent = child2, root's children = nil
+p node2.parent
+#child2
+p node1.children
+#nil
