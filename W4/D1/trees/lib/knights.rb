@@ -27,8 +27,8 @@ class KnightPathFinder
     ]
     valid_pos = []
     possible_pos.each do |pospos|
-      next if pospos[0] > @grid.length || pospos[0] < 0
-      next if pospos[1] > @grid.length || pospos[1] < 0
+      next if pospos[0] > 7 || pospos[0] < 0
+      next if pospos[1] > 7 || pospos[1] < 0
       valid_pos << pospos
     end
     
@@ -39,5 +39,5 @@ class KnightPathFinder
     all_moves = KnightPathFinder.valid_moves(pos)
     all_moves.select{|move| !@considered_positions.include?(move)}
   end
-  
+
 end
