@@ -11,22 +11,33 @@ class PolyTreeNode
   end
 
   def parent=(node)
-    # debugger
+    debugger
     if node != nil
       @parent = node 
       node.children << self unless node.children.include?(self)
-    else
-      self.parent.children.delete(self)
+    elsif self.parent != nil
+      parent_node = self.parent
+      parent_node.children.delete(self) if parent_node.children.include?(self)
       @parent = nil
     end 
   end
 
-  # def inspect
-  #   @value
-  # end
+  def inspect
+    @parent
+  end
 
+  def add_child(node)
+    node.parent = self
+    @children << node if !@children.include?(node)
+  end
 
+  def remove_child(node)
+    raise "not a child" if !@children.include?(node)
+    node.parent = nil
+    @children.delete(node)
+  end
 
+  
 end
 
 node1 = PolyTreeNode.new('root') 
