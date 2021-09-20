@@ -12,14 +12,15 @@ class PolyTreeNode
 
   def parent=(node)
     # debugger
+    parent_node = self.parent
+    parent_node.children.delete(self) if parent_node != nil && parent_node.children.include?(self) 
+    
     if node != nil
       @parent = node 
       node.children << self unless node.children.include?(self)
-    elsif self.parent != nil
-      parent_node = self.parent
-      parent_node.children.delete(self) if parent_node.children.include?(self)
+    else
       @parent = nil
-    end 
+    end
   end
 
   def inspect
@@ -40,19 +41,19 @@ class PolyTreeNode
   def dfs(target)
     
     return self if @value == target
-    return nil if @children.empty?
+    #return nil if @children.empty?
       
     # elsif @children.length == 0
     #   return nil
     @children.each do |child|
-      if child.dfs(target) != nil
-        child.dfs(target)
+      #child_dfs = child.dfs(target)
+      if child_dfs != nil
+        return child_dfs
       end
     end
     return nil
   end
-
-  
+ 
 end
 
 node1 = PolyTreeNode.new('root') 
