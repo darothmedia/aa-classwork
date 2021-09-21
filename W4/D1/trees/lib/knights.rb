@@ -14,16 +14,16 @@ class KnightPathFinder
     # return false if pos[0] > @grid.length || pos[0] < 0
     # return false if pos[1] > @grid.length || pos[1] < 0
     #last_pos = @considered_positions[-1]
-    last_pos = pos
+    # last_pos = pos
     possible_pos = [
-      [(last_pos[0] - 2), (last_pos[1] - 1)], 
-      [(last_pos[0] - 1), (last_pos[1] - 2)], 
-      [(last_pos[0] + 2), (last_pos[1] - 1)], 
-      [(last_pos[0] + 1), (last_pos[1] - 2)], 
-      [(last_pos[0] + 2), (last_pos[1] + 1)],
-      [(last_pos[0] - 2), (last_pos[1] + 1)],
-      [(last_pos[0] - 1), (last_pos[1] + 2)],
-      [(last_pos[0] + 1), (last_pos[1] + 2)]
+      [(pos[0] - 2), (pos[1] - 1)], 
+      [(pos[0] - 1), (pos[1] - 2)], 
+      [(pos[0] + 2), (pos[1] - 1)], 
+      [(pos[0] + 1), (pos[1] - 2)], 
+      [(pos[0] + 2), (pos[1] + 1)],
+      [(pos[0] - 2), (pos[1] + 1)],
+      [(pos[0] - 1), (pos[1] + 2)],
+      [(pos[0] + 1), (pos[1] + 2)]
     ]
     valid_pos = []
     possible_pos.each do |pospos|
@@ -40,4 +40,40 @@ class KnightPathFinder
     all_moves.select{|move| !@considered_positions.include?(move)}
   end
 
+<<<<<<< HEAD
 end
+=======
+  #   def bfs(target)
+  #   queue = []
+  #   queue << self
+  #   while !queue.empty?
+  #     queue_first = queue.shift
+  #     return queue_first if queue_first.value == target
+  #     queue += queue_first.children if !queue_first.children.empty?
+  #   end
+  #   return nil
+  # end
+
+  def find_path(end_pos)
+    queue = []
+    queue << @root_node
+   
+    path = [@root_node]
+    while !queue.empty?
+      valid_moves = KnightPathFinder.valid_moves(queue.shift)
+      path << end_pos if valid_moves.include?(end_pos)
+      valid_moves.each do |move|
+        if KnightPathFinder.valid_moves(move).include?(end_pos)
+          path << [move, end_pos]
+          return path
+        end
+      end
+    end
+    return nil
+
+  end
+  
+end
+
+p KnightPathFinder.valid_moves([0,0])
+>>>>>>> c689da6775422aa13b632e359cdfc5db7b2627d2
