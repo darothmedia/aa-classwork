@@ -51,22 +51,33 @@ class KnightPathFinder
   #   return nil
   # end
 
-  def find_path(end_pos)
-    queue = []
-    queue << @root_node
+  
+    # queue = []
+    # queue << @root_node
    
+    # path = [@root_node]
+    # while !queue.empty?
+    #   valid_moves = KnightPathFinder.valid_moves(queue.shift)
+    #   path << end_pos if valid_moves.include?(end_pos)
+    #   valid_moves.each do |move|
+    #     if KnightPathFinder.valid_moves(move).include?(end_pos)
+    #       path << [move, end_pos]
+    #       return path
+    #     end
+    #   end
+    # end
+    # return nil
+  def find_path(end_pos)
     path = [@root_node]
-    while !queue.empty?
-      valid_moves = KnightPathFinder.valid_moves(queue.shift)
-      path << end_pos if valid_moves.include?(end_pos)
-      valid_moves.each do |move|
-        if KnightPathFinder.valid_moves(move).include?(end_pos)
-          path << [move, end_pos]
-          return path
-        end
-      end
+    valid_moves = KnightPathFinder.valid_moves(@root_node)
+    valid_moves.each do |move|
+      @move_tree.add_child(move)
     end
-    return nil
+    
+    if @move_tree.bfs(end_pos) == end_pos
+      path << end_pos
+    else 
+    end
 
   end
   
