@@ -40,9 +40,6 @@ class KnightPathFinder
     all_moves.select{|move| !@considered_positions.include?(move)}
   end
 
-<<<<<<< HEAD
-end
-=======
   #   def bfs(target)
   #   queue = []
   #   queue << self
@@ -76,4 +73,3 @@ end
 end
 
 p KnightPathFinder.valid_moves([0,0])
->>>>>>> c689da6775422aa13b632e359cdfc5db7b2627d2
