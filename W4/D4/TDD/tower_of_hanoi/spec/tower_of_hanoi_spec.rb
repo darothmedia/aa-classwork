@@ -22,4 +22,35 @@ describe Board do
     end
   end
 
+  describe "#[]" do
+    it "returns the pile of the grid at index given" do
+      expect(board[0]).to eq(board.grid[0])
+    end
+
+    it "raises an error if index given is invalid" do
+      expect{board[4]}.to raise_error(RuntimeError, 'Invalid pile')
+    end
+  end
+
+  describe "#pick" do
+    # it "should take in a pile as an argument" do
+    #   expect(board.pick).to receive(Integer)
+    # end
+
+    it "returns the top disc of the pile picked" do
+      expect(board.pick(0)).to be(1)
+    end
+
+    it "raises an error if the pile picked is empty" do
+      expect{board.pick(1)}.to raise_error(RuntimeError, 'Empty pile')
+    end
+
+    it "removes the top disc of the pile picked" do
+      board.pick(0)
+      expect(board[0]).to eq([4,3,2])
+    end
+  end
+
+
+
 end
