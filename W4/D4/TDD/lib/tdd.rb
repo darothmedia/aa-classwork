@@ -22,4 +22,18 @@ class Array
     sums
   end
 
+  def my_transpose
+    new_arr = Array.new(self.length) {Array.new(self.length)}
+    (0...self.length).each do |row|
+      (0...self.length).each do |col|
+        new_arr[row][col] = self[col][row]
+      end
+    end
+    new_arr
+  end
+
+  def stock_picker
+    [self.index(self.min), self.index(self.max)]
+  end
+
 end
