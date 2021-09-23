@@ -51,6 +51,38 @@ describe Board do
     end
   end
 
+  describe "#place" do
+
+    it "places the result of #pick on a new pile" do
+      board.place(1,2)
+      expect(board[2]).to eq([1])
+    end
+
+    it "places the element at the top of the pile" do
+      board.place(1,2)
+      board.place(2,2)
+      expect(board[2]).to eq([1,2])
+    end
+  end
+
+  describe "#win?" do
+
+    it "returns true if the elements have been positioned correctly" do
+      board[2] = [4,3,2,1]
+      board[0] = []
+      board[1] = []
+      expect(board.win?).to be(true)
+    end
+
+    it "returns false if elements have not been positioned correctly" do
+      board[2] = [3,2,1]
+      board[0] = [4]
+      board[1] = []
+      expect(board.win?).to be(false)
+    end
+
+  end
+
 
 
 end
