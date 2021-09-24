@@ -50,3 +50,63 @@ big = (1..10_000).to_a.shuffle
 #   b.report("10,000:   ") { my_better_min(big) }
 # end
 
+list = [5, 3, -7]
+
+def largest_contiguous_subsum(list)
+  #iterate through array
+  #nested loop
+
+  subarrs = []
+    list.each_index do |i|
+      (i..list.length - 1).each do |j|
+        subarrs << list[i..j]
+      end
+    end
+  inj = subarrs.inject do |acc, el|
+    if acc.sum > el.sum
+      acc
+    else
+      el
+    end
+  end
+
+  inj.sum
+end
+
+p largest_contiguous_subsum(list)
+largest = 0
+
+
+
+def largest_better(list)
+  # largest_sum = 0
+  # i = 0
+  # j = list.length - 1
+  # while i < list.length && j > 0
+  #   if i < j
+  #     current_sum = list[i..j].sum
+  #     largest_sum = current_sum if current_sum > largest_sum
+  #     i += 1
+  #   else
+  #     j -= 1
+  #     i = 0
+  #   end
+  # end
+  # largest_sum
+  largest_sum = 0
+  current_sum = 0
+
+  list.each do |ele|
+    current_sum += ele
+    if current_sum > largest_sum
+      largest_sum = current_sum
+    elsif current_sum < 0
+      current_sum = 0
+    end
+  end
+
+  largest_sum
+end
+
+p largest_better(list)
+
