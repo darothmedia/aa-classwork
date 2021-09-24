@@ -9,4 +9,13 @@ class Card
     @suit = suit
     @face_down = true
   end
+
+  def flip
+    # @face_down = false if @face_down = true
+    # @face_down = true if @face_down = false
+    @face_down = !@face_down
+  end
+
+
 end
+

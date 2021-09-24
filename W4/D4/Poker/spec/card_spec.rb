@@ -21,4 +21,18 @@ describe Card do
       expect(card.face_down).to be(true)
     end
   end
+
+  describe "#flip" do
+    it "changes the face_down value to false if true" do
+      card.flip
+      expect(card.face_down).to eq(false)
+    end
+
+    it "changes the face_down value to true if false" do
+      card.flip
+      card.flip
+      expect(card.face_down).to eq(true)
+    end
+  end
+
 end
