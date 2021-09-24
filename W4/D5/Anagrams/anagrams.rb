@@ -1,3 +1,6 @@
+require "Benchmark"
+
+
 def first_anagram?(word_1, word_2)
 
   new_arr = word_1.split("").permutation.to_a 
@@ -28,8 +31,8 @@ def third_anagram?(word_1, word_2)
   word_1.split("").sort == word_2.split("").sort
 end
 
-p third_anagram?("dog", "god")
-p third_anagram?("elvis", "lives")
+# p third_anagram?("dog", "god")
+# p third_anagram?("elvis", "lives")
 
 
 def fourth_anagram?(word_1, word_2)
@@ -48,3 +51,13 @@ end
 
 # p fourth_anagram?("dog", "god")
 # p fourth_anagram?("elvis", "lives")
+
+word1 = "elvis"
+word2 = "lives"
+
+Benchmark.bm do |b|
+  b.report("First:   ") { first_anagram?(word1, word2) }
+  b.report("Second:  ") { second_anagram?(word1, word2) }
+  b.report("Third:   ") { third_anagram?(word1, word2) }
+  b.report("Fourth:   ") { fourth_anagram?(word1, word2) }
+end
