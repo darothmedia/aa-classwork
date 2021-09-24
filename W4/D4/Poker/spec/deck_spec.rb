@@ -17,5 +17,18 @@ describe Deck do
 
   end
 
+  describe "#deal" do
+    let(:player) {double("player")}
+    it "hands out one card to a player" do
+      deck.deal(player)
+      expect(deck.stack.length).to eq(51)
+    end
+
+    it "player receives the card" do
+      deck.deal(player)
+    end
+
+  end
+
 
 end
