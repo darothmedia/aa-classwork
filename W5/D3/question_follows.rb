@@ -3,6 +3,44 @@ class QuestionFollows
 
     attr_accessor :id, :u_id, :questions_id 
 
+    def self.followers_for_question_id(something)
+        QuestionsDataBase.instance.execute(<<-SQL, something)
+        SELECT
+            *
+        FROM
+            users JOIN question_follows ON
+            question_follows.u_id = users.id
+        WHERE
+            question_follows.questions_id = ?
+        SQL
+    end
+
+    def self.followed_questions_for_user_id(user_id)
+        QuestionsDataBase.instance.execute(<<-SQL, user_id)
+        SELECT
+            *
+        FROM
+            users JOIN question_follows ON
+            question_follows.u_id = users.id
+        WHERE
+            question_follows.questions_id = ?
+        SQL
+    end
+
+    def self.most_followed_questions(n)
+        QuestionsDataBase.instance.execute(<<-SQL, n)
+        SELECT
+            *
+        FROM
+            question_follows JOIN questions ON
+            question_follows.questions_id = questions.id
+        GROUP BY
+            questions.id
+        LIMIT
+            ?
+        SQL
+    end
+
     def self.all
         data = QuestionsDataBase.instance.execute('SELECT * FROM question_follows')
         data.map { |datum| QuestionFollows.new(datum) }
