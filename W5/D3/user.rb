@@ -36,4 +36,12 @@ class User
                 (?, ?)
         SQL
     end
+
+    def authored_questions
+        Question.find_by_author_id(self.id)
+    end
+
+    def authored_replies
+        Reply.find_by_user_id(self.id)
+    end
 end

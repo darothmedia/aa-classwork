@@ -9,14 +9,14 @@ class Question
         data.map { |datum| Question.new(datum) }
     end
 
-    def self.find_by_id(id)
+    def self.find_by_author_id(id)
         id_instance = QuestionsDataBase.instance.execute(<<-SQL, id)
             SELECT
                 *
             FROM
-                users
+                questions
             WHERE
-                id = ?
+                questioner = ?
         SQL
         return nil if id_instance.length < 0
         Question.new(id_instance)
@@ -37,4 +37,14 @@ class Question
                 (?, ?, ?)
         SQL
     end
+
+    def author
+        self.questioner 
+    end
+
+    def replies
+        Replies.find_by_question_id(self.id)
+    end
+
+
 end

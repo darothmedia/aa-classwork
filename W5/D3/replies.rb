@@ -7,14 +7,27 @@ class Replies
         data.map { |datum| Replies.new(datum) }
     end
 
-    def self.find_by_id(id)
+    def self.find_by_user_id(id)
         reply_instance = QuestionsDataBase.instance.execute(<<-SQL, id)
             SELECT
                 *
             FROM
                 replies
             WHERE
-                id = ?
+                user = ?
+        SQL
+        return nil if reply_instance.length < 0
+        Replies.new(reply_instance)
+    end
+
+    def self.find_by_question_id(id)
+        reply_instance = QuestionsDataBase.instance.execute(<<-SQL, id)
+            SELECT
+                *
+            FROM
+                replies
+            WHERE
+                subject_question = ?
         SQL
         return nil if reply_instance.length < 0
         Replies.new(reply_instance)
@@ -35,5 +48,25 @@ class Replies
             VALUES
                 (?, ?, ?, ?)
         SQL
+    end
+
+    def author
+        self.user
+    end
+
+    def question
+        self.subject_question
+    end
+
+    def child_replies
+        QuestionsDataBase.instance.execute(<<-SQL)
+            SELECT
+                *
+            FROM
+                replies
+            WHERE
+                parent_reply = self.id 
+        SQL
+
     end
 end
