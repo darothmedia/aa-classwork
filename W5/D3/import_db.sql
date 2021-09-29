@@ -60,12 +60,21 @@ INSERT INTO
     users (f_name, l_name)
 VALUES
     ('Tyler', 'Harper'),
-    ('Adrian', 'Rothschild');
+    ('Adrian', 'Rothschild'),
+    ('Ty', 'Har'),
+    ('Ad', 'Roth'),
+    ('Michael', 'Jordan'),
+    ('Kanye', 'West'),
+    ('North', 'West'),
+    ('Kim', 'Kardashian West'),
+    ('Kourtney', 'Kardashian'),
+    ('Khloe', 'Kardashian');
 
 INSERT INTO
     questions (title, body, questioner)
 VALUES
-    ('byebug', 'How do you install the gem byebug?', 1);
+    ('byebug', 'How do you install the gem byebug?', 1),
+    ('twitter', 'How do you break the internet?', 1);
 
 INSERT INTO
     question_follows (u_id, questions_id)
@@ -80,4 +89,8 @@ VALUES
 INSERT INTO
     question_likes (liker, question)
 VALUES
-    (2, 1);
+    (2, 1),
+    (4, 1),
+    (5, 1),
+    (6, 1),
+    (7, 1);
