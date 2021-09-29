@@ -1,4 +1,4 @@
-require 'questions_database.rb'
+# require 'questions_database.rb'
 
 class Question
 

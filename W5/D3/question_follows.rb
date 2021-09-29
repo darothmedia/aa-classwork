@@ -1,3 +1,4 @@
+
 class QuestionFollows
 
     attr_accessor :id, :u_id, :questions_id 

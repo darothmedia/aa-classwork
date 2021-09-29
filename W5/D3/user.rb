@@ -1,6 +1,3 @@
-require 'questions_database.rb'
-
-
 class User
 
     attr_accessor :id, :f_name, :l_name
