@@ -1,4 +1,4 @@
-require 'sqlite'
+require 'sqlite3'
 require 'singleton'
 
 class QuestionsDataBase < SQLite3::Database
@@ -15,9 +15,26 @@ class QuestionsDataBase < SQLite3::Database
 end
 
 class User
+
+    attr_accessor :id, :f_name, :l_name
+
     def self.all
-        data = QuestionsDataBase.instance.execute('SELECT * FROM users')
+        data = QuestionsDataBase.execute('SELECT * FROM users')
         data.map { |datum| User.new(datum) }
+    end
+
+    def self.find_by_name(f_name, l_name)
+        name_instance = QuestionsDataBase.execute(<<-SQL, f_name, l_name)
+            SELECT
+                *
+            FROM
+                users
+            WHERE
+                f_name = ? AND
+                l_name = ?
+        SQL
+        return nil if name_instance.length < 0
+        User.new(name_instance)
     end
 
     def initialize(options)
@@ -28,13 +45,13 @@ class User
 
     def create
         raise "User already in database" if self.id
-        QuestionsDataBase.instance.execute(<<-- SQL, 
-            self.f_name, self.l_name
-            
-        )
+        QuestionsDataBase.execute(<<-SQL, @f_name, @l_name) 
+            INSERT INTO
+                users (f_name, l_name)
+            VALUES
+                (?, ?)
         SQL
     end
-
 end
 
 class Question
