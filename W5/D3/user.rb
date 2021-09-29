@@ -21,6 +21,8 @@ class User
         User.new(name_instance)
     end
 
+    
+
     def initialize(options)
         @id = options['id']
         @f_name = options['f_name']
@@ -48,4 +50,24 @@ class User
     def followed_questions
         QuestionFollows.followed_questions_for_user_id(self.id)
     end
+
+    def liked_questions 
+        QuestionLikes.liked_questions_for_user_id(self.id)
+    end
+
+    def average_karma
+        QuestionsDataBase.instance.execute(<<-SQL, self.id)
+        SELECT  
+            COUNT(*) / COUNT(DISTINCT (questions))
+        FROM
+            questions
+        LEFT OUTER JOIN
+            questions_likes ON 
+            questions.id = question_likes.question
+
+        WHERE
+            questions.questioner = ? 
+        SQL   
+    end
+
 end

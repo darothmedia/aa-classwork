@@ -23,6 +23,56 @@ class QuestionLikes
         QuestionLikes.new(ql_instance)
     end
 
+    self.likers_for_question_id(question_id)
+        QuestionsDataBase.instance.execute(<<-SQL, question_id)
+        SELECT
+            liker
+        FROM
+            question_likes
+        WHERE
+            question = ?
+        SQL
+    end
+
+    def self.likes_for_question_id(question_id)
+        QuestionsDataBase.instance.execute(<<-SQL, question_id)
+        SELECT
+            COUNT(*)
+        FROM
+            question_likes
+        WHERE
+            question = ?
+        SQL
+    end
+
+    def self.liked_questions_for_user_id(user_id)
+        QuestionsDataBase.instance.execute(<<-SQL, user_id)
+        SELECT
+            question
+        FROM
+            question_likes
+        WHERE
+            liker = ?
+        SQL
+    end
+
+    def self.most_liked_questions(n)
+        QuestionsDataBase.instance.execute(<<-SQL, n)
+        SELECT
+            *
+        FROM
+            question_likes JOIN questions ON
+            question_likes.question = questions.id
+        GROUP BY
+            questions.id
+        LIMIT
+            ?
+        SQL
+    end
+
+
+
+
     def initialize(options)
         @id = options['id']
         @liker = options['liker']
@@ -38,4 +88,5 @@ class QuestionLikes
                 (?, ?)
         SQL
     end
+
 end
