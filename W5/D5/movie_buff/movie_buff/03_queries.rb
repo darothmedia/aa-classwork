@@ -1,6 +1,16 @@
 def what_was_that_one_with(those_actors)
   # Find the movies starring all `those_actors` (an array of actor names).
   # Show each movie's title and id.
+  Movie.joins(:actors)
+  .select('movies.title','movies.id')
+  .where('those_actors[0]', 'castings.ord':1)
+
+  #start with casting 
+  Castings attach our actors to it 
+  filter out to only have castings of those actors
+  put those castings into groups by movies
+  which group have the same number of casting as number of casts in 
+
 
 end
 
