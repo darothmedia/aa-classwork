@@ -10,12 +10,24 @@ end
 
 def bad_years
   # List the years in which a movie with a rating above 8 was not released.
+  over_8= Movie.select(:yr)
+  .where('score >8')
+  .distinct
+
+  Movie
+  .where.not('yr': over_8)
+  .distinct
+  .pluck(:yr)
 
 end
 
 def cast_list(title)
   # List all the actors for a particular movie, given the title.
   # Sort the results by starring order (ord). Show the actor id and name.
+  Movie.joins(:actors)
+  .select('actors.id', 'actors.name')
+  .order('castings.ord')
+  .where('movies.title': title)
 
 end
 
