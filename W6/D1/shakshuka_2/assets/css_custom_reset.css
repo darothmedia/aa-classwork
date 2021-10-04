@@ -1,0 +1,94 @@
+html, body, div, span, h1, h2, h3, h4, a, ol, ul, li, form, label, article, aside, figure, figcaption, footer, header, nav {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+body {
+  line-height: 1.5;
+  width: 900px;
+  margin: 0 auto;
+}
+
+main {
+  width: 700px;
+}
+
+content {
+  display: flex;
+  align-content: space-between;
+  width: 100%;
+}
+
+aside {
+  width: 180px;
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+section {
+  width: 520px;
+  margin-left: 30px;
+}
+
+.ingredients-list li {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.directions li {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+nav li {
+  display: inline-block;
+}
+
+a {
+  display: block;
+  padding: 20px 20px 20px 20px;
+}
+
+nav {
+  float: right;
+}
+
+input[type="radio"], select, input[type="submit"] {
+  cursor: pointer;
+  outline: none;
+}
+
+select {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+}
+
+text, select, textarea {
+  width: 200px;
+}
+
+*/ footer {
+  float: left;
+  width: 180px;
+  margin-left: 30px;
+}
+
+h2+.user_review {
+  border-top: 1px solid black;
+}
+
+/* This is useful when implementing a grid system so that all image elements
+will take up 100% width of their containers */
+
+img {
+  width: 100%
+}
