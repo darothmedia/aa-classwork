@@ -12,11 +12,14 @@ class SQLObject
   end
 
   def self.table_name=(table_name)
-    # ...
+    table_name = self.to_s
+    # string = self.to_s[0].downcase + self.to_s[1..-1] + 's'
+    # table_name ||= string
+    table_name
   end
 
   def self.table_name
-    # ...
+    
   end
 
   def self.all
