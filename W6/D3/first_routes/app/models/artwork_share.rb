@@ -1,26 +1,23 @@
 # == Schema Information
 #
-# Table name: users
+# Table name: artwork_shares
 #
 #  id         :bigint           not null, primary key
-#  username   :string           not null
+#  viewer_id  :integer          not null
+#  artwork_id :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class User < ApplicationRecord
-  validates :username, presence: true
+class ArtworkShare < ApplicationRecord
+  validates :viewer_id, :artwork_id, presence: true
 
-  has_many :artworks,
+  belongs_to :artwork,
     primary_key: :id,
     foreign_key: :artwork_id,
     class_name: :Artwork
 
-  has_many :artwork_shares,
+  belongs_to :viewer,
     primary_key: :id,
     foreign_key: :viewer_id,
-    class_name: :ArtworkShare
-
-  has_many :shared_artworks,
-    through: :artwork_shares,
-    source: :artwork
+    class_name: :User
 end
