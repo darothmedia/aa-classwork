@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   resources :artworks, except: [:index, :new, :edit]
 
+  resources :comments, only: [:index, :create, :destroy]
+
   # /artworks/2/artwork_shares/
 
   resources :artwork_shares, only: [:create, :destroy]

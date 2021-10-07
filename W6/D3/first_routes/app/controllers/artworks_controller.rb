@@ -1,12 +1,12 @@
 class ArtworksController < ApplicationController
 
   def index
-    if params.has_key?(:user_id)
+    if params.has_key?(:user_id) #/users/user_id/artworks
       @artworks = 
         Artwork
           .joins(:artwork_shares)
           .where('artist_id = ? OR viewer_id = ?', params[:user_id], params[:user_id])
-    elsif 
+    else
       @artworks = Artwork.all
     end
 
