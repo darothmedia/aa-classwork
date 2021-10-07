@@ -1,15 +1,4 @@
 class ArtworkSharesController < ApplicationController
-
-  def index
-    if params.has_key?(:artwork_id)
-      @artwork_shares = ArtworkShare.where(artwork_id: params[:artwork_id])
-    else
-      @artwork_shares = ArtworkShare.all
-    end
-
-    render json: @artwork_shares
-  end
-
   def create
     artwork_share = ArtworkShare.new(artwork_shares_params)
     if artwork_share.save
