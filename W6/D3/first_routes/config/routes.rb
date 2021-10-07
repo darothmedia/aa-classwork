@@ -3,9 +3,7 @@ Rails.application.routes.draw do
 
   resources :users, except: [:new, :edit]
 
-  resources :artworks, except: [:new, :edit] do
-    resources :artwork_shares, only: :index
-  end
+  resources :artworks, except: [:new, :edit]
 
   # /artworks/2/artwork_shares/
 

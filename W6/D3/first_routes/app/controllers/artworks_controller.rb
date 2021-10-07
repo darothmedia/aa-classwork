@@ -20,7 +20,7 @@ class ArtworksController < ApplicationController
 
   def destroy
     artwork = Artwork.find(params[:id])
-    artwork.destroy
+    artwork.delete
     render json: artwork
   end
 
