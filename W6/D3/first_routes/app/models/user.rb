@@ -13,7 +13,8 @@ class User < ApplicationRecord
   has_many :artworks,
     primary_key: :id,
     foreign_key: :artwork_id,
-    class_name: :Artwork
+    class_name: :Artwork,
+    dependent: :destroy
 
   has_many :artwork_shares,
     primary_key: :id,
