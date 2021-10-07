@@ -1,8 +1,11 @@
 class CommentsController < ApplicationController
   def index
+    if params.has_key?(:comment)
     comments = Comment
       .where('user_id = ? OR artwork_id = ?', params[:comment][:user_id], params[:comment][:artwork_id])
-
+    else
+      comments = Comment.all
+    end
     render json: comments
   end
 
