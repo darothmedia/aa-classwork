@@ -7,6 +7,7 @@ class ArtworksController < ApplicationController
           .joins(:artwork_shares)
           .where('artist_id = ? OR viewer_id = ?', params[:user_id], params[:user_id])
     else
+      puts "I am in the else statement"
       @artworks = Artwork.all
     end
 
