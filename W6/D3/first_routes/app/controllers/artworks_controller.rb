@@ -6,6 +6,8 @@ class ArtworksController < ApplicationController
         Artwork
           .joins(:artwork_shares)
           .where('artist_id = ? OR viewer_id = ?', params[:user_id], params[:user_id])
+    elsif 
+      @artworks = Artwork.all
     end
 
     render json: @artworks
