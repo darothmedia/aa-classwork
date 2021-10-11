@@ -1,3 +1,12 @@
 <h1>Sign Up</h1>
 
-<form action="<%= users_url %>" method='POST'></form>
+<form action="<%= users_url %>" method='POST'>
+<label for="username">Username:</label>
+<input type="text" id="username" name="user[:user_name]">
+<br />
+<label for="password">Password:</label>
+<input type="password" id="password" name="user[:password]">
+<br />
+<input type="submit" value="Sign Up!">
+
+</form>
