@@ -3,7 +3,7 @@ class User < ApplicationRecord
   validates :session_token, :user_name, uniqueness: true
 
   def reset_session_token!
-    @token = SecureRandom.base64(10)
+    self.session_token = SecureRandom.base64(10)
   end
 
   def password=(password)
