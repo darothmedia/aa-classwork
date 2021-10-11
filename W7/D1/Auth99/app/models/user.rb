@@ -10,20 +10,25 @@
 #  updated_at      :datetime         not null
 #
 class User < ApplicationRecord
-  validates :user_name, :session_token, :password_digest, presence: true
+  attr_reader :password
+  after_initialize :ensure_session_token 
+
+  validates :user_name, :password_digest, presence: true
   validates :session_token, :user_name, uniqueness: true
 
   def reset_session_token!
-    self.session_token = SecureRandom.base64(10)
+    self.session_token = SecureRandom.base64(16) 
+    self.save! # 
+    self.session_token 
   end
 
   def password=(password)
     @password = password
-    self.password_digest = Bcrypt::Password.create(password)
+    self.password_digest = BCrypt::Password.create(password)
   end
 
-  def is_valid_password?(password)
-    password_hash = Bcrypt::Password.new(self.password_digest)
+  def is_valid_password?(password) 
+    password_hash = BCrypt::Password.new(self.password_digest)
     password_hash.is_password?(password)  
   end 
 
@@ -36,5 +41,8 @@ class User < ApplicationRecord
     end
   end
 
+  def ensure_session_token
+    self.session_token ||= SecureRandom.base64(16)
+  end
   
 end
