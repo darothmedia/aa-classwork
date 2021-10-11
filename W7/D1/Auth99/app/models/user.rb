@@ -11,13 +11,19 @@ class User < ApplicationRecord
     self.password_digest = Bcrypt::Password.create(password)
   end
 
-  def is_password?(password)
+  def is_valid_password?(password)
     password_hash = Bcrypt::Password.new(self.password_digest)
-    password_hash == Bcrypt::Password.create(password)
-  end
+    password_hash.is_password?(password)  
+  end 
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
+    if user && user.is_valid_password?(password)
+      return user 
+    else
+      return nil 
+    end
   end
 
+  
 end
