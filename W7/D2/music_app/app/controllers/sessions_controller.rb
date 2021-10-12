@@ -1,17 +1,21 @@
 class SessionsController < ApplicationController
   def new
-
+      render :new
   end
-  
+
   def create
-    @current_user = User.find_by(:session_token = session[:session_token])
-    @current_user.reset_session_token!
-    redirect_to user_url(@current_user)
+    @user = User.find_by_credentials(params[:user][:email], params[:user][:password])
+    if @user
+      login(@user)
+      redirect_to user_url(@user)
+    else
+      flash.now[:errors] = ["invalid"]
+      render :new
+    end
   end
 
   def destroy
-    @current_user.reset_session_token!
-    @current_user.save!
-    @current_user.session_token
+    logout
+    redirect_to new_session_url
   end
 end

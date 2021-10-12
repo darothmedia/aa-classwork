@@ -14,11 +14,13 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
 
   def self.generate_session_token
-    self.session_token = SecureRandom::urlsafe_arm64
+    self.session_token = SecureRandom::urlsafe_base64
   end
 
   def reset_session_token!
-    self.session_token = session[:session_token]
+    self.session_token = SecureRandom::urlsafe_base64
+    self.save!
+    self.session_token
   end
 
   def ensure_session_token
@@ -27,18 +29,18 @@ class User < ApplicationRecord
 
   def password=(password)
     self.password_digest = BCrypt::Password.create(password)
+    @password = password
   end
 
   def is_same_password?(password)
-    pass = Bcrypt::Password.new(self.password_digest)
+    pass = BCrypt::Password.new(self.password_digest)
     pass.is_password?(password)
   end
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
-    if user
-      return user if user.password_digest.is_same_password?(password)
-      return nil
+    if user && user.is_same_password?(password)
+      return user
     else
       return nil
     end

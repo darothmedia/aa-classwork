@@ -12,7 +12,20 @@
   <body>
     <h1> This is zombocom MusicApp </h1>
       <% if logged_in? %>
-        <h3> Hello <%= @user.email %> </h3>
+        <h3> Hello <%= current_user.email %> </h3>
+        <form action="<%= session_url %>" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <%= auth_token %>
+        <input type="submit" value="Peace Out">
+        </form>
+      <% else %>
+        <p>Please log in </p>
+      <% end %>
+
+      <% if flash[:errors] %>
+      <% flash[:errors].each do |error|%>
+        <%= error %><br />
+      <% end %>
       <% end %>
     <%= yield %>
   </body>
