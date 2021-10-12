@@ -19,6 +19,8 @@
     value="<%= cat.birth_date %>">
   <br>
 
+  <input name="cat[user_id]" type="hidden" value="<%= current_user.id %>">
+  
   <label for="cat_color">Color</label>
   <select name="cat[color]" id="cat_color">
   <option disabled selected>-- select a color --</option>

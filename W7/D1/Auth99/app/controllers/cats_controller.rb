@@ -16,6 +16,7 @@ class CatsController < ApplicationController
 
   def create
     @cat = Cat.new(cat_params)
+    @cat.user_id = current_user.id
     if @cat.save
       redirect_to cat_url(@cat)
     else
@@ -25,8 +26,12 @@ class CatsController < ApplicationController
   end
 
   def edit
-    @cat = Cat.find(params[:id])
-    render :edit
+    @cat = Cat.find(params[:id]) 
+    if current_user.cats.include?(@cats)
+      render :edit
+    else
+      redirect_to cats_url
+    end
   end
 
   def update
