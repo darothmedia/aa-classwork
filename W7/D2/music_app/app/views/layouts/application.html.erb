@@ -10,6 +10,10 @@
   </head>
 
   <body>
+    <h1> This is zombocom MusicApp </h1>
+      <% if logged_in? %>
+        <h3> Hello <%= @user.email %> </h3>
+      <% end %>
     <%= yield %>
   </body>
 </html>
