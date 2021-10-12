@@ -1,7 +1,12 @@
 class CatRentalRequestsController < ApplicationController
+  before_action :require_logged_in 
+
   def approve
-    current_cat_rental_request.approve!
-    redirect_to cat_url(current_cat)
+    if current_user.cats.include?(current_cat)
+      current_cat_rental_request.approve!
+      redirect_to cat_url(current_cat)
+    else
+      flash.now[:errors] = current_cat.errors.full_messages
   end
 
   def create

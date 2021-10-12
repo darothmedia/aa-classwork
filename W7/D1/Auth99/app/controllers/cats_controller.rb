@@ -1,4 +1,6 @@
 class CatsController < ApplicationController
+  before_action :require_logged_in #callin require log in before anything else 
+  
   def index
     @cats = Cat.all
     render :index
@@ -27,7 +29,7 @@ class CatsController < ApplicationController
 
   def edit
     @cat = Cat.find(params[:id]) 
-    if current_user.cats.include?(@cats)
+    if current_user.cats.include?(@cat) 
       render :edit
     else
       redirect_to cats_url
@@ -35,8 +37,9 @@ class CatsController < ApplicationController
   end
 
   def update
-    @cat = Cat.find(params[:id])
-    if @cat.update_attributes(cat_params)
+    @cat = Cat.find(params[:id]) 
+    if current_user.cats.include?(@cat) 
+      @cat.update_attributes(cat_params)
       redirect_to cat_url(@cat)
     else
       flash.now[:errors] = @cat.errors.full_messages
