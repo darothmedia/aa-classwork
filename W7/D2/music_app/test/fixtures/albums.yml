@@ -1,0 +1,24 @@
+# == Schema Information
+#
+# Table name: albums
+#
+#  id         :bigint           not null, primary key
+#  title      :string           not null
+#  year       :integer          not null
+#  live       :boolean          default(FALSE)
+#  band_id    :integer          not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+one:
+  title: MyString
+  year: 1
+  live: false
+  band_id: 1
+
+two:
+  title: MyString
+  year: 1
+  live: false
+  band_id: 1
