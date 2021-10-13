@@ -559,3 +559,26 @@ NoMethodError - undefined method `goals' for #<User:0x00007fae7d4011d0>:
   app/controllers/users_controller.rb:23:in `show'
 
 Started POST "/__better_errors/6d538dd729cc5d87/variables" for ::1 at 2021-10-13 15:28:53 -0700
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/" for ::1 at 2021-10-13 16:39:45 -0600
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ry/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/ry/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/ry/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (2.7ms)
+Completed 200 OK in 10ms (Views: 4.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for ::1 at 2021-10-13 16:39:50 -0600
+Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (0.9ms)
+  Rendered users/new.html.erb within layouts/application (2.2ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+Completed 200 OK in 187ms (Views: 173.7ms | ActiveRecord: 5.7ms)
+
+
