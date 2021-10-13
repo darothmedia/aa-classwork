@@ -31,9 +31,7 @@ feature 'the signup process', type: :feature do
 
       expect(page).to have_content('Hello, sam_i_am')
     end
-  end
-
-  
+  end  
 end
 
 feature 'logging in' do
@@ -50,8 +48,19 @@ feature 'logging in' do
 end
 
 feature 'logging out' do
-  scenario 'begins with a logged out state'
 
-  scenario 'doesn\'t show username on the homepage after logout'
+  background :each do
+    create(:user)
+    login_user(User.last)
+    click_button('Log Out!')
+  end
+  
+  scenario 'begins with a logged out state' do
+    expect(page).to have_content('Successfully logged out!')
+  end
+
+  scenario 'doesn\'t show username on the homepage after logout' do
+    expect(page).to_not have_content(User.last.username)
+  end
 
 end
