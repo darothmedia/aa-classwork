@@ -1,2 +1,26 @@
-<h1>Albums#new</h1>
-<p>Find me in app/views/albums/new.html.erb</p>
+<h1>Add a new Album</h1>
+<form action=" <%= albums_url %> " method="POST">
+<%= auth_token%>
+<label for="title">Album Name:</label>
+<input type="text" id="title" name="album[title]">
+<br />
+<label for="band">Band Name:</label>
+<select id="band" name="album[band_id]" value="<%= @band.name %>">
+<% @bands.each do |band| %>
+  <%if band == @band%>
+    <option value="<%= band.id %>" selected><%= band.name %></option>
+  <%else%>
+    <option value="<%= band.id %>"><%= band.name %></option>
+  <%end%>
+<%end%>
+</select>
+<br />
+<label for="year">Year Recorded:</label>
+<input type="number" min="1900" max="2021" step="1" id="year" name="album[year]" value="2021">
+<br />
+<label for="live">Live</label>
+<input type="radio" id="live" name="album[live]" value="<%=true%>">
+<label for="studio">Studio</label>
+<input type="radio" id="studio" name="album[live]" value="<%=false%>">
+<br />
+<input type="submit" value="Add Album">

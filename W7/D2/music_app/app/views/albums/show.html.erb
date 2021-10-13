@@ -1,2 +1,11 @@
-<h1>Albums#show</h1>
-<p>Find me in app/views/albums/show.html.erb</p>
+<h1><%= @album.title %></h1>
+<ul>
+<li>Artist: <%= @album.band.name %></li>
+<li>Year Recorded: <%= @album.year %></li>
+<li><% if @album.live == true%>
+<%= "Recorded Live" %>
+<%else%>
+<%= "Studio Recording" %>
+<%end%>
+</li>
+<ul>
