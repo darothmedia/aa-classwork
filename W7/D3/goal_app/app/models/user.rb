@@ -7,6 +7,8 @@ class User < ApplicationRecord
     validates :password_digest, presence: true
     validates :password, length: {minimum: 6}, allow_nil: true
 
+    has_many :goals
+
     def password=(password)
       self.password_digest = BCrypt::Password.create(password) #we make a bcrypt string looking object
       @password = password

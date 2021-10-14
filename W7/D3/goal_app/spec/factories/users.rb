@@ -8,4 +8,9 @@ FactoryBot.define do
       password { "password" }
     end
   
+    # factory :goal do
+    #     title { "Workout" }
+    #     body { "Lower body tomorrow" }
+    #     user_id { 1 }
+    # end
   end
