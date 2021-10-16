@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RedditClone</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <ul>
+    <% if flash[:errors]%>
+      <%flash[:errors].each do |error|%>
+        <li><%=error%></li>
+      <%end%>
+    <%end%>
+    </ul>
+    <%= yield %>
+  </body>
+</html>

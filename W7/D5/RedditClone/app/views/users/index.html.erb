@@ -1,0 +1,25 @@
+<h1>All Users</h1>
+<table>
+  <thead>
+    <th>Username</th>
+    <th>Delete</th>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+    <tr>
+      <td><a href="<%=user_url(user)%>"><%=user.username%></a></td>
+      <td>
+        <form action="<%= user_url(user)%>" method="POST">
+          <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="submit" value="Delete User">
+        </form>
+      </td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>
+
+
+
+
