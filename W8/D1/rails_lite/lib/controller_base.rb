@@ -2,6 +2,7 @@ require 'active_support'
 require 'active_support/core_ext'
 require 'erb'
 require_relative './session'
+require 'byebug'
 
 class ControllerBase
   attr_reader :req, :res, :params
@@ -10,27 +11,36 @@ class ControllerBase
   def initialize(req, res)
     @req = req
     @res = res
-    @already_built_response = nil
+    @already_built_response = false
   end
 
   # Helper method to alias @already_built_response
   def already_built_response?
+    @already_built_response
   end
 
   # Set the response status code and header
   def redirect_to(url)
-    http_status = '302'
-    headers = {'Content-Type' => 'text/html', 'Location' => '#{url}'}
-    body = ['somebody']
-
-    [http_status, headers, body]
+    if @already_built_response == false
+      res.status = 302
+      res.location = url
+      @already_built_response = true
+    else
+      flash[:errors] = ["That's an error"]
+    end
   end
 
   # Populate the response with content.
   # Set the response's content type to the given type.
   # Raise an error if the developer tries to double render.
   def render_content(content, content_type)
-    
+    if @already_built_response == false
+      res.body = [content]
+      res.content_type = content_type
+      @already_built_response = true
+    else
+      flash[:errors] = ["That's an error"]
+    end
   end
 
   # use ERB and binding to evaluate templates
