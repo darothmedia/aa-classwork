@@ -1,1 +1,37 @@
 /* PHASE 0: Sidebar */
+
+.profile-picture {
+  display: block;
+  margin-top: -90px;
+  position: relative;
+}
+
+#nav-link {
+  display: block;
+  font-weight: 550;
+  padding-bottom: 5px;
+  margin-top: -10px;
+  border-bottom: 1px solid lightgray;
+}
+
+.profile-nav a:first-child {
+  border-top: 1px solid lightgray;
+  padding-top: 10px;
+}
+
+#name {
+  font-size: larger;
+  font-weight: 600;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+.content-sidebar p {
+  padding-bottom: 20px;
+  border-bottom: gray;
+  border-width: 10px;
+}
+
+.profile-nav {
+  padding-bottom: 20px;
+}
