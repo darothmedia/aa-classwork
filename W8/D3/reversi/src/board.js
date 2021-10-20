@@ -116,10 +116,6 @@ Board.prototype._positionsToFlip = function(pos, color, dir, piecesToFlip){
   } else {
     return this._positionsToFlip(move, color, dir, piecesToFlip);
   }
-
-
-
-
 };
 
 
@@ -159,12 +155,6 @@ Board.prototype.placePiece = function (pos, color) {
       };
     }
   }
-
-
-
-  
-
-
 };
 
 /**
@@ -172,12 +162,25 @@ Board.prototype.placePiece = function (pos, color) {
  * the Board for a given color.
  */
 Board.prototype.validMoves = function (color) {
+  let allPositions = [];
+  for (i = 0; i < 8; i++) {
+    for (j = 0; j < 8; j++) {
+      if (this.validMove([i, j], color)) {
+        allPositions.push([i, j])
+      }
+    }
+  }
+  return allPositions;
 };
 
 /**
  * Checks if there are any valid moves for the given color.
  */
 Board.prototype.hasMove = function (color) {
+  if (this.validMoves(color).length === 0) {
+    return false;
+  }
+  return true;
 };
 
 
@@ -187,6 +190,10 @@ Board.prototype.hasMove = function (color) {
  * the black player are out of moves.
  */
 Board.prototype.isOver = function () {
+  if (!this.hasMove("white") && !this.hasMove("black")) {
+    return true;
+  }
+  return false;
 };
 
 
@@ -196,6 +203,21 @@ Board.prototype.isOver = function () {
  * Prints a string representation of the Board to the console.
  */
 Board.prototype.print = function () {
+  let board = ["  0  1  2  3  4  5  6  7 "]
+  let row = ["0"]
+  for (i = 0; i < 8; i++) {
+    for (j = 0; j < 8; j++) {
+      if (!this.isOccupied([i, j])) {
+        row.push(" _ "); 
+      } else {
+        let piece = this.getPiece([i, j])
+        row.push(" " + piece.toString() + " ")
+      }
+    }
+    board.push(row.join(""));
+    row = [`${i + 1}`]
+  }
+  console.log(board);
 };
 
 
