@@ -1,0 +1,19 @@
+<form action="<%= cats_url %>" method="POST">
+  <label>Birth Date<input type="date" name="cats[birth_date]"></label>
+  <br />
+  <label>Name<input type="text" name="cats[name]"></label>
+  <br />
+  <label>Sex<input type="buttons" name="cats[sex]"></label>
+  <br />
+  <label>Description<textarea name="cats[description]"></textarea>
+  <br />
+  <label>Color<select name="cats[color]">
+  <option value = '' disabled = disabled selected> Please Select! </option>
+  <option value = 'Brown'>Brown</option>
+  <option value = 'Black'>Black</option>
+  <option value = 'Purple'>Purple</option>
+  <option value = 'White'>White</option>
+  </select>
+  <br />
+  <input type="submit" value="New User">
+</form>

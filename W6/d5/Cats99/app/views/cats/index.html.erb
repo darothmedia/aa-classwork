@@ -1,0 +1,9 @@
+<h1>Cats Index</h1>
+<% @cats.each do |cat| %>
+  <%= cat.birth_date %>
+  <%= cat.name %>
+  <%= cat.sex %>
+  <%= cat.color %>
+  <%= cat.description %>
+<% end %>
+<p>Find me in app/views/cats/index.html.erb</p>
