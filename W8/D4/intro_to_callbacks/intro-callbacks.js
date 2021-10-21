@@ -65,8 +65,8 @@ function addNumbers(sum, numsLeft, completionCallback) {
       sum += num;
       console.log(`Partial Sum: ${sum}`);
       numsLeft --;
-      addNumbers(sum, numsLeft, completionCallback);
       reader.close;
+      addNumbers(sum, numsLeft, completionCallback);
     })
   }
 }
