@@ -1,0 +1,131 @@
+.title {
+  padding-top: 50px;
+  font-size: 30px;
+  font-family: sans-serif;
+  text-align: center;
+  text-shadow: 6mm;
+  font-weight: 600;
+}
+
+.board {
+  display: block;
+  margin: 0 auto;
+  border: 2px solid gray;
+  width: 600px;
+  height: 600px;
+}
+
+table {
+  border: 2px solid gray;
+  width: 90%;
+  height: 90%;
+  margin: 0 auto;
+  margin-top: 1%;
+}
+
+tr {
+  border-bottom: 2px solid gray;
+}
+
+tr:nth-child(odd) td:nth-child(odd) {
+  background-color: #D6DBDF;
+  opacity: 80%;
+}
+
+tr:nth-child(even) td:nth-child(even) {
+  background-color: #D6DBDF;
+  opacity: 80%;
+}
+
+td {
+  border: 2px solid gray;
+  background-color: #AEB6BF;
+  opacity: 80%;
+}
+
+.labels {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 1%;
+}
+
+.vert-labels {
+  position: absolute;
+  margin-left: 1%;
+}
+
+.vert-labels div {
+  padding-bottom: 49px;
+}
+
+.vert-labels div:first-child {
+  padding-top: 32px;
+}
+
+.black-piece {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  margin-top: -25px;
+  margin-left: 5px;
+  border-radius: 50px;
+  background-color: black;
+  border: 1px solid gray;
+  opacity: 100%;
+}
+
+.white-piece {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  margin-top: -25px;
+  margin-left: 5px;
+  border-radius: 50px;
+  background-color: white;
+  border: 1px solid gray;
+  opacity: 100%;
+}
+
+tr:nth-child(odd) td:nth-child(odd) .white-piece {
+  opacity: 0;
+}
+
+tr:nth-child(even) td:nth-child(even) .white-piece {
+  opacity: 0;
+}
+
+tr:nth-child(-n+3) td .white-piece {
+  opacity: 0;
+}
+
+tr:nth-child(-n+1) td .white-piece {
+  opacity: 0;
+}
+
+tr:nth-child(-n+3) td .black-piece {
+  opacity: 0;
+}
+
+tr td:nth-child(-n+3) .black-piece {
+  opacity: 0;
+}
+
+tr td:nth-child(-n+3) .white-piece {
+  opacity: 0;
+}
+
+tr td:nth-last-child(-n+3) .white-piece {
+  opacity: 0;
+}
+
+tr td:nth-last-child(-n+3) .black-piece {
+  opacity: 0;
+}
+
+tr:nth-last-child(-n+3) td .white-piece {
+  opacity: 0;
+}
+
+tr:nth-last-child(-n+3) td .black-piece {
+  opacity: 0;
+}

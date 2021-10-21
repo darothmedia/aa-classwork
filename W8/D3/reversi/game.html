@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<head>
+  <title>Reversi!</title>
+  <link rel="stylesheet" href="reset.css" type="text/css">
+  <link rel="stylesheet" href="game.css" type="text/css">
+</head>
+<body>
+  
+<h1 class="title">Let's Play Reversi...</h1>
+<br / >
+<div class="board">
+  <div class="labels">
+    <div class="label">0</div>
+    <div class="label">1</div>
+    <div class="label">2</div>
+    <div class="label">3</div>
+    <div class="label">4</div>
+    <div class="label">5</div>
+    <div class="label">6</div>
+    <div class="label">7</div>
+  </div>
+
+  <div class="vert-labels">
+    <div class="label">0</div>
+    <div class="label">1</div>
+    <div class="label">2</div>
+    <div class="label">3</div>
+    <div class="label">4</div>
+    <div class="label">5</div>
+    <div class="label">6</div>
+    <div class="label">7</div>
+  </div>
+<table>
+<tr>
+  <td>
+    <span class="black-piece" id="00"></span>
+    <p class="white-piece" id="00"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="01"></span>
+    <p class="white-piece" id="01"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="02"></span>
+    <p class="white-piece" id="02"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="03"></span>
+    <p class="white-piece" id="03"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="04"></span>
+    <p class="white-piece" id="04"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="05"></span>
+    <p class="white-piece" id="05"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="06"></span>
+    <p class="white-piece" id="06"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="07"></span>
+    <p class="white-piece" id="07"></p>
+  </td>
+</tr>
+<tr>
+  <td>
+    <span class="black-piece" id="10"></span>
+    <p class="white-piece" id="10"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="11"></span>
+    <p class="white-piece" id="11"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="12"></span>
+    <p class="white-piece" id="12"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="13"></span>
+    <p class="white-piece" id="13"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="14"></span>
+    <p class="white-piece" id="14"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="15"></span>
+    <p class="white-piece" id="15"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="16"></span>
+    <p class="white-piece" id="16"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="17"></span>
+    <p class="white-piece" id="17"></p>
+  </td>
+</tr>
+<tr>
+  <td>
+    <span class="black-piece" id="20"></span>
+    <p class="white-piece" id="20"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="21"></span>
+    <p class="white-piece" id="21"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="22"></span>
+    <p class="white-piece" id="22"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="23"></span>
+    <p class="white-piece" id="23"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="24"></span>
+    <p class="white-piece" id="24"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="25"></span>
+    <p class="white-piece" id="25"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="26"></span>
+    <p class="white-piece" id="26"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="27"></span>
+    <p class="white-piece" id="27"></p>
+  </td>
+</tr>
+<tr>
+  <td>
+    <span class="black-piece" id="30"></span>
+    <p class="white-piece" id="30"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="31"></span>
+    <p class="white-piece" id="31"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="32"></span>
+    <p class="white-piece" id="32"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="33"></span>
+    <p class="white-piece" id="33"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="34"></span>
+    <p class="white-piece" id="34"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="35"></span>
+    <p class="white-piece" id="35"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="36"></span>
+    <p class="white-piece" id="36"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="37"></span>
+    <p class="white-piece" id="37"></p>
+  </td>
+</tr>
+<tr>
+  <td>
+    <span class="black-piece" id="40"></span>
+    <p class="white-piece" id="40"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="41"></span>
+    <p class="white-piece" id="41"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="42"></span>
+    <p class="white-piece" id="42"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="43"></span>
+    <p class="white-piece" id="43"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="44"></span>
+    <p class="white-piece" id="44"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="45"></span>
+    <p class="white-piece" id="45"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="46"></span>
+    <p class="white-piece" id="46"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="47"></span>
+    <p class="white-piece" id="47"></p>
+  </td>
+</tr>
+<tr>
+  <td>
+    <span class="black-piece" id="50"></span>
+    <p class="white-piece" id="50"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="51"></span>
+    <p class="white-piece" id="51"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="52"></span>
+    <p class="white-piece" id="52"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="53"></span>
+    <p class="white-piece" id="53"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="54"></span>
+    <p class="white-piece" id="54"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="55"></span>
+    <p class="white-piece" id="55"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="56"></span>
+    <p class="white-piece" id="56"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="57"></span>
+    <p class="white-piece" id="57"></p>
+  </td>
+</tr>
+<tr>
+  <td>
+    <span class="black-piece" id="60"></span>
+    <p class="white-piece" id="60"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="61"></span>
+    <p class="white-piece" id="61"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="62"></span>
+    <p class="white-piece" id="62"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="63"></span>
+    <p class="white-piece" id="63"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="64"></span>
+    <p class="white-piece" id="64"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="65"></span>
+    <p class="white-piece" id="65"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="66"></span>
+    <p class="white-piece" id="66"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="67"></span>
+    <p class="white-piece" id="67"></p>
+  </td>
+</tr>
+<tr>
+  <td>
+    <span class="black-piece" id="70"></span>
+    <p class="white-piece" id="70"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="71"></span>
+    <p class="white-piece" id="71"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="72"></span>
+    <p class="white-piece" id="72"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="73"></span>
+    <p class="white-piece" id="73"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="74"></span>
+    <p class="white-piece" id="74"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="75"></span>
+    <p class="white-piece" id="75"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="76"></span>
+    <p class="white-piece" id="76"></p>
+  </td>
+  <td>
+    <span class="black-piece" id="77"></span>
+    <p class="white-piece" id="77"></p>
+  </td>
+</tr>
+</table>
+</div>
+
+</body>
+</html>
