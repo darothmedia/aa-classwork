@@ -1,14 +1,20 @@
 /* PHASE 2: Thumbs */
 
-.thumb>img {
-  border-radius: 5px;
-}
+.friends-grid {}
 
-
-.friends-grid {
+#flexbox {
   display: flex;
 }
 
-#flexed {
-  display: flexbox;
+#flexbox li {
+  padding: 5px;
+}
+
+#flexbox:nth-child(3) {
+  margin-right: 10px;
+}
+
+#flexbox img {
+  border-radius: 15px;
+  border: 1px solid gray;
 }
