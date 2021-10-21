@@ -1,3 +1,7 @@
+body {
+  background-color: lightskyblue;
+}
+
 .title {
   padding-top: 50px;
   font-size: 30px;
@@ -5,26 +9,29 @@
   text-align: center;
   text-shadow: 6mm;
   font-weight: 600;
+  color: whitesmoke;
 }
 
 .board {
   display: block;
   margin: 0 auto;
-  border: 2px solid gray;
+  border: 5px solid lightgray;
+  background-color: white;
   width: 600px;
   height: 600px;
 }
 
 table {
-  border: 2px solid gray;
+  border: 0px solid lightgray;
   width: 90%;
   height: 90%;
   margin: 0 auto;
   margin-top: 1%;
+  background-color: lightgray;
 }
 
 tr {
-  border-bottom: 2px solid gray;
+  border-bottom: 2px solid lightgray;
 }
 
 tr:nth-child(odd) td:nth-child(odd) {
@@ -38,7 +45,7 @@ tr:nth-child(even) td:nth-child(even) {
 }
 
 td {
-  border: 2px solid gray;
+  border: 0px solid lightgray;
   background-color: #AEB6BF;
   opacity: 80%;
 }
@@ -47,11 +54,15 @@ td {
   display: flex;
   justify-content: space-evenly;
   margin-top: 1%;
+  font-family: sans-serif;
+  font-weight: 600;
 }
 
 .vert-labels {
   position: absolute;
   margin-left: 1%;
+  font-family: sans-serif;
+  font-weight: 600;
 }
 
 .vert-labels div {
