@@ -58,6 +58,7 @@ const reader = readline.createInterface({
 
 function addNumbers(sum, numsLeft, completionCallback) {
   if (numsLeft === 0) {
+    reader.close();
     return completionCallback(sum);
   } else {
     reader.question('Enter a number: ', function(answer) {
@@ -65,10 +66,10 @@ function addNumbers(sum, numsLeft, completionCallback) {
       sum += num;
       console.log(`Partial Sum: ${sum}`);
       numsLeft --;
-      reader.close;
       addNumbers(sum, numsLeft, completionCallback);
-    })
+    });
   }
 }
 
 addNumbers(0, 3, sum => console.log(`Total Sum: ${sum}`));
+
