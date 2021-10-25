@@ -8,6 +8,7 @@ function MovingObject(options) {
 }
 
 MovingObject.prototype.draw = function (ctx) {
+  // debugger
   ctx.fillStyle = this.color;
   ctx.beginPath();
 
