@@ -1,10 +1,10 @@
 module.exports = MovingObject;
 
 function MovingObject(options) {
-  this.pos = options["pos"];
-  this.vel = options["vel"];
-  this.radius = options["radius"];
-  this.color = options["color"];
+  this.pos = options["pos"] || [0,0];
+  this.vel = options["vel"] || [1,1];
+  this.radius = options["radius"] || 5;
+  this.color = options["color"] || "black";
 }
 
 MovingObject.prototype.draw = function (ctx) {
@@ -22,3 +22,11 @@ MovingObject.prototype.draw = function (ctx) {
 
   ctx.fill();
 }
+
+MovingObject.prototype.move = function() {
+  this.pos = [
+    this.pos[0] + this.vel[0],
+    this.pos[1] + this.vel[1]
+  ];
+}
+
