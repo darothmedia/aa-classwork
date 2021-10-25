@@ -1,9 +1,10 @@
+module.exports = Game;
 const Asteroid = require("./asteroid");
 
 function Game(options) {
-  const DIM_X = options['DIM_X'] || 400;
-  const DIM_Y = options['DIM_Y'] || 400;
-  const NUM_ASTEROIDS = options['NUM_ASTEROIDS'] || 5;
+  const DIM_X = 400;//options['DIM_X'] || 400;
+  const DIM_Y = 400;//options['DIM_Y'] || 400;
+  const NUM_ASTEROIDS = 5//options['NUM_ASTEROIDS'] || 5;
   this.asteroids = []
 }
 Game.prototype.randomPosition = function() {
@@ -17,7 +18,7 @@ Game.prototype.addAsteroids = function() {
 }
 
 Game.prototype.draw = function(ctx) {
-  ctx.clearRect();
+  ctx.clearRect(0, 0, this.DIM_X, this.DIM_Y);
   this.asteroids.forEach((asteroid) => {
     asteroid.draw();
   }

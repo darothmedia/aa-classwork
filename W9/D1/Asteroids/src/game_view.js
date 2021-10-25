@@ -1,7 +1,8 @@
-require("game.js")
+module.exports = GameView;
+const Game = require("./game.js")
 
 function GameView(ctx) {
-  this.game = new Game();
+  this.game = new Game();// Game.call()
   this.context = ctx;
 }
 
