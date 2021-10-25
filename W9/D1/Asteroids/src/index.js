@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-
+  
   const MovingObject = require("./moving_object.js");
   const Asteroid = require("./asteroid.js");
   const Canvas = document.getElementById("game-canvas");
@@ -8,7 +8,9 @@ document.addEventListener("DOMContentLoaded", function () {
                                   radius: 20,
                                   color: "black"});
   let asteroid = new Asteroid({ pos: [10,20]});
+  let gv = new GameView(ctx);
   
+  gv.start();
   // ctx.render();
   circle.draw(ctx);
   asteroid.draw(ctx);
