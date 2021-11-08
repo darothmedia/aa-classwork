@@ -6,7 +6,7 @@ class Game extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      board: new Minesweeper.Board(4, 4)
+      board: new Minesweeper.Board(8, 4)
     }
     this.updateGame = this.updateGame.bind(this);
   }
@@ -17,10 +17,10 @@ class Game extends React.Component {
 
   render() {
     let board = this.state.board
-    console.log(board)
+    // console.log(board)
     return(
     <div>
-    Hello
+    <h1>Minesweeper!</h1>
     {/* {this.state.board.map((el) => {
 
     //   })} */}

@@ -1,3 +1,9 @@
 .board-div {
   border: 2px solid black;
 }
+
+.grid-row {
+  border: 2px solid black;
+  display: flex;
+  justify-content: space-evenly;
+}
