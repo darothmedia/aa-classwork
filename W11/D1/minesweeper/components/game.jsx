@@ -11,8 +11,12 @@ class Game extends React.Component {
     this.updateGame = this.updateGame.bind(this);
   }
 
-  updateGame() {
-
+  updateGame(tile, boolean) {
+   
+    if (boolean === true) {tile.toggleFlag()}
+    else {tile.explore()}
+    
+    console.log(`${tile.flagged}`)
   }
 
   render() {
