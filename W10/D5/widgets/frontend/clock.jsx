@@ -7,36 +7,32 @@ export default class Clock extends React.Component {
       time: new Date(),
     }
     this.tik = this.tik.bind(this)
-    this.seconds = this.state.time.getSeconds()
-    this.minutes = this.state.time.getMinutes()
-    this.hours = this.state.time.getHours()
   }
 
   componentDidMount(){
-    console.log('componentDidMount() lifecycle')
-    this.tik()
+    let clockTikId = setInterval(this.tik, 1000);
+  }
+
+  componentWillUnmount(){
+    clearInterval(clockTikId)
   }
   
 
   render(){
-    console.log('render() lifecycle')
-    let clockTikIds = setInterval(() => {
-    }, 1000)
-  
-    
-    
     return (
       <div>
-        <h1>
-          TikTok
+        <h1 className="bluefish">
+          TikTok Clarice
         </h1>
-        <h2>{this.hours}:{this.minutes}:{this.seconds}</h2>
+        <div className="timecontainer"> 
+          <h2 className="redfish">{this.state.time.toLocaleTimeString()}</h2>
+          <h2 className="redfish">{this.state.time.toDateString()}</h2>
+        </div>
       </div>
     )
   }
 
   tik(){
-    let newSeconds = this.seconds + 1
-    this.setState({})
+    this.setState({ time: new Date()})
   }
 }
