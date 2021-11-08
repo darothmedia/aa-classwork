@@ -12,7 +12,7 @@ class Game extends React.Component {
   }
 
   updateGame(tile, boolean) {
-   
+  
     if (boolean === true) {tile.toggleFlag()}
     else {tile.explore()}
     

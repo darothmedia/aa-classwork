@@ -15,18 +15,17 @@ export default class Tile extends React.Component {
     else {this.bombcount = "x"}
     // console.log(this.props.reactkey)
     return(
-      <button onClick={this.handleClick}>{`${this.bombcount}`}</button>
+      <button onClick={this.handleClick(e)}>{`${this.bombcount}`}</button>
     )
   }
 
-  handleClick(){
-    console.log(this.tile.adjacentBombCount())
-    // this.bombcount = this.tile.adjacentBombCount()
-    // this.props.updateGame()
-    // this.tile.explored = true
-    // this.render()
-    this.props.updateGame(this.tile, this.tile.explored)
-    this.render()
+  handleClick(e){
+    if (e.ctrlKey) {console.log('cntrl key pressed')}
+    this.props.updateGame(this.tile, true)
+  }
+
+  handleAuxClick(){
+    this.props.updateGame(this.tile, true)
   }
 
 }
