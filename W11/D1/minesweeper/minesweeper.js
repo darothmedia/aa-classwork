@@ -23,6 +23,7 @@ export class Tile {
     }
 
     this.explored = true;
+    // console.log('inside explore', this);
     if (!this.bombed && this.adjacentBombCount() === 0) {
       this.neighbors().forEach(tile => {
         tile.explore();
@@ -104,6 +105,7 @@ export class Board {
     let lost = false;
     this.grid.forEach(row => {
       row.forEach(tile => {
+        console.log(tile)
         if (tile.bombed && tile.explored) {
           lost = true;
         }
