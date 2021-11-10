@@ -15,17 +15,16 @@ export default class Tile extends React.Component {
     else {this.bombcount = "x"}
     // console.log(this.props.reactkey)
     return(
-      <button onClick={this.handleClick(e)}>{`${this.bombcount}`}</button>
+      <button onClick={this.handleClick}>{`${this.bombcount}`}</button>
     )
   }
 
   handleClick(e){
-    if (e.ctrlKey) {console.log('cntrl key pressed')}
-    this.props.updateGame(this.tile, true)
-  }
-
-  handleAuxClick(){
-    this.props.updateGame(this.tile, true)
+    if (e.altKey) {
+      this.props.updateGame(this.tile, true)
+    } else {
+      this.props.updateGame(this.tile, false)
+    }
   }
 
 }
