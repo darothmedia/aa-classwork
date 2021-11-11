@@ -10,12 +10,12 @@ export const receiveTodos = (todos) => ({
 
 export const receiveTodo = (todo) => ({
   type: RECEIVE_TODO,
-  todo
+  todo: todo
 });
 //single todo
 
-export const removeTodo = (todo) => ({
+export const removeTodo = (todo_id) => ({
   type: REMOVE_TODO,
-  todo
+  todo_id
 })
 

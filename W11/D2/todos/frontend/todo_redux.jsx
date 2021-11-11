@@ -1,9 +1,10 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import ToDo from "./components/to_do.jsx"
+import Root from "./components/root.jsx"
 import {configureStore} from "./store/store.js"
 import * as ToDoActions from './actions/todo_actions.js'
 import * as StepActions from './actions/step_actions.js'
+import { allTodos } from "./reducers/selectors.js"
 
 
 const preloadedState = {
@@ -11,6 +12,12 @@ const preloadedState = {
     1: {
       id: 1,
       title: 'take a shower',
+      body: 'and be clean',
+      done: false
+    },
+    2: {
+      id: 2,
+      title: 'take a bath',
       body: 'and be clean',
       done: false
     }
@@ -32,8 +39,10 @@ const preloadedState = {
 }
 
 document.addEventListener("DOMContentLoaded", function(){
-  ReactDOM.render(<ToDo />, document.getElementById("root"));
   const store = configureStore(preloadedState);
+  ReactDOM.render(<Root store={store}/>, document.getElementById("root"));
+
+
   window.store = store;
   window.receiveTodos = ToDoActions.receiveTodos;
   window.receiveTodo = ToDoActions.receiveTodo;
@@ -42,4 +51,6 @@ document.addEventListener("DOMContentLoaded", function(){
   window.receiveSteps = StepActions.receiveSteps;
   window.receiveStep = StepActions.receiveStep;
   window.removeStep = StepActions.removeStep
+
+  window.allTodos = allTodos
 })
