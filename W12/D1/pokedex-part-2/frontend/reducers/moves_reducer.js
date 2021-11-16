@@ -5,8 +5,7 @@ const movesReducer = (state = {}, action) => {
   let newState = Object.assign({}, state)
   switch (action.type) {
     case RECEIVE_SINGLE_POKEMON:
-      newState[action.pokemon.id] = action.pokemon.moves;
-      return newState
+      return action.pokemon.moves
     default:
       return state;
   }
