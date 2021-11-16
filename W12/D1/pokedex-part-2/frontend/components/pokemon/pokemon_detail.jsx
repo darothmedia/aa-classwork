@@ -6,12 +6,14 @@ class PokemonDetail extends React.Component {
     }
 
     componentDidMount(){
-        debugger
+
         this.props.requestSinglePokemon(this.props.match.params.pokemonId)
     }
 
     componentDidUpdate(prevProps){
-
+        if(prevProps !== this.props){
+        this.props.requestSinglePokemon(this.props.match.params.pokemonId)
+        } 
     }
 
     render(){
@@ -21,7 +23,13 @@ class PokemonDetail extends React.Component {
         // console.log(this.props.pokemon)
         return(
             <div>
+               
                 <h1>{pokeId ? pokeId.name : ""}</h1>
+                <ul>
+                    <li>{pokeId ? "attact: " + pokeId.attack : ""}</li>
+                    <li>{pokeId ? "defense: " + pokeId.defense : ""}</li>
+                    <li><img src={ pokeId ? pokeId.imgageUrl : ""}/> </li>
+                </ul>
             </div>
         )
     }

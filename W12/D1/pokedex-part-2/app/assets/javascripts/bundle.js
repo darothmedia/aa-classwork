@@ -216,12 +216,15 @@ var PokemonDetail = /*#__PURE__*/function (_React$Component) {
   _createClass(PokemonDetail, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      debugger;
       this.props.requestSinglePokemon(this.props.match.params.pokemonId);
     }
   }, {
     key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps) {}
+    value: function componentDidUpdate(prevProps) {
+      if (prevProps !== this.props) {
+        this.props.requestSinglePokemon(this.props.match.params.pokemonId);
+      }
+    }
   }, {
     key: "render",
     value: function render() {
@@ -229,7 +232,9 @@ var PokemonDetail = /*#__PURE__*/function (_React$Component) {
       var pokeId = this.props.pokemon[this.props.match.params.pokemonId];
       console.log(pokeId); // console.log(this.props.pokemon)
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, pokeId ? pokeId.name : ""));
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, pokeId ? pokeId.name : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, pokeId ? "attact: " + pokeId.attack : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, pokeId ? "defense: " + pokeId.defense : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: pokeId ? pokeId.imgageUrl : ""
+      }), " ")));
     }
   }]);
 
