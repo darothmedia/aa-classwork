@@ -155,11 +155,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var App = function App() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Switch"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
+    path: "/pokemon/:pokemonId",
+    component: _components_pokemon_pokemon_details_container__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
     path: "/",
     component: _components_pokemon_pokemon_index_container__WEBPACK_IMPORTED_MODULE_2__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
-    path: "/pokemon",
-    component: _components_pokemon_pokemon_details_container__WEBPACK_IMPORTED_MODULE_3__["default"]
   })));
 };
 
@@ -214,9 +214,22 @@ var PokemonDetail = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(PokemonDetail, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      debugger;
+      this.props.requestSinglePokemon(this.props.match.params.pokemonId);
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {}
+  }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.props.pokemon.pokemon.name));
+      // console.log(this.props.match.params.pokemonId)
+      var pokeId = this.props.pokemon[this.props.match.params.pokemonId];
+      console.log(pokeId); // console.log(this.props.pokemon)
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, pokeId ? pokeId.name : ""));
     }
   }]);
 
