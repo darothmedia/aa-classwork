@@ -1,15 +1,21 @@
 import React from "react";
+import {Link} from 'react-router-dom'
 
 export default ({user, logout}) => {
-  const display = user ? (
+  if (user) {
+    return(
     <>
-      <h1>Hello, {user.username}!</h1>
+      <h1>Hello, {user}!</h1>
       <button onClick={logout}>Log Out</button>
     </>
-  ) : (
-    <>
-      <Link to='/signup'>Sign Up</Link>
-      <Link to='/login'>Log In</Link>
-    </>
-  )
+    )}
+    else {
+      return(
+        <>
+          <Link to='/signup'>Sign Up</Link>
+          <br />
+          <Link to='/login'>Log In</Link>
+        </>
+      )
+    }
 }
