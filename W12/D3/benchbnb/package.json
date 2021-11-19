@@ -30,6 +30,7 @@
     "webpack-cli": "^4.9.1"
   },
   "dependencies": {
+    "mapbox-gl": "^2.6.0",
     "redux-thunk": "^2.4.0"
   }
 }
